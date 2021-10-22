@@ -1,0 +1,53 @@
+[core]
+
+[user]
+	name = Milad Vafaeifard
+	email =
+  
+[alias]
+	root = "!git init && git commit -m “Root” --allow-empty"
+	l = "log --decorate --oneline --graph -n 20"
+	la = "log --all --decorate --oneline --graph -n 20"
+	today = "log --decorate --oneline --graph --since=midnight"
+	f = "fetch"
+	s = "status"
+	pr = "pull --rebase"
+	p = "pull"
+	ps = "push"
+	b = "branch"
+	ba = "branch --all"
+	co = "checkout"
+	a = "add"
+	ai = "add -i"
+	c = "commit"
+	ce = "commit --allow-empty-message"
+	cm = "commit -m"
+	amend = "commit --amend"
+	commend = "commit --amend --no-edit"
+	st = "stash"
+	pop = "stash pop"
+	sf = "diff-tree --no-commit-id --name-only -r"
+	cls = "remote prune origin"
+	d = "diff"
+	dc = "diff --cached"
+	count-commits = "!f() { git rev-list --count HEAD ^$1; }; f"
+
+	# Rebase Interactively
+	# Usage `g ri <n>` will interactively rebase the last <n> commits.
+	ri = "!f() { git rebase -i HEAD~$1; }; f"
+
+	# STash Diff
+	# Usage: `g std <n>` will show the diff between the current state
+	# and the <n>th stash entry.
+	std = "!f() { git stash show -p stash@{$1}; }; f"
+
+	# Find Message
+	# Usage: `g fm <text>` will retrieve all commits that contain <text>
+	# in their commit message.
+	gfm = "!f() { git log --decorate --oneline --date=short --grep=$1; }; f"
+	
+	# Delete all local branches
+	da = "!f() { git branch | grep -v '^*' | xargs git branch -D;}; f"
+	
+	# cherry-pick
+	chp = "cherry-pick"
